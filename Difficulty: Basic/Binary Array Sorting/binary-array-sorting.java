@@ -37,19 +37,24 @@ class Solution {
     public void binSort(int[] arr) {
         // code here
         int n=arr.length;
-        //count no of 0 in array
-        int count1=0;
-        for(int i=0;i<n;i++){
-            if(arr[i]==0) count1++;
+        int start=0;
+        int end=n-1;
+        while(start<end){
+            if(arr[start]==0){
+                start++;
+            }else if(arr[end]==1){
+                end--;
+            }else{
+                swap(arr,start,end);
+                start++;
+                end--;
+            }
+            
         }
-        //count no of 1 in array
-        int count2=n-count1;
-        for(int i=0;i<count1;i++){
-            if(arr[i]==1) arr[i]=1-arr[i];
-            else arr[i]=0;
-        }
-        for(int i=count1;i<n;i++){
-            arr[i]=1;
-        }
+    }
+    public static void swap(int[]arr,int start,int end){
+        int temp=arr[start];
+        arr[start]=arr[end];
+        arr[end]=temp;
     }
 }
